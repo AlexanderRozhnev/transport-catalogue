@@ -139,10 +139,10 @@ The distance between stops A and B can be either unequal or equal to the distanc
 </details>
 
 Bus route description - dictionary with keys:
-`type` — string _"Bus"_. Means that the dictionary describes a bus route;
-`name` — route name;
-`stops` - an array with the names of the stops through which the route passes. On a circular route, the name of the last stop duplicates the name of the first. For example: [_"stop1"_, _"stop2"_, _"stop3"_, _"stop1"_];
-`is_roundtrip` is a value of type _bool_. _true_ if the route is circular.
+- `type` — string _"Bus"_. Means that the dictionary describes a bus route;
+- `name` — route name;
+- `stops` - an array with the names of the stops through which the route passes. On a circular route, the name of the last stop duplicates the name of the first. For example: [_"stop1"_, _"stop2"_, _"stop3"_, _"stop1"_];
+- `is_roundtrip` is a value of type _bool_. _true_ if the route is circular.
 
 <a id="stat_requests"></a>
 ## Queries to the transport catalogue and the format of responses to them
@@ -259,7 +259,7 @@ The contents of the _map_ key can be viewed as SVG format.
 <a id="make"></a>
 # Program assembly and requirements
 
-The program is written using C++ standard 17.
+The program is written using C++ standard 17.  
 The Google Protobuf library version 3.21.12 was used (file format _"proto 3"_).
 
 The project is built using CMake.
