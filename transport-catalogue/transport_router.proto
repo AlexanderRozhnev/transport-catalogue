@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package tr_proto;
+
+/* Trasport router Settings */
+message RouterSettings {
+    double bus_velocity = 1;    /* bus velocity, meters/min (converted) */
+    int32 bus_wait_time = 2;   /* wait time for bus on stop, minutes */
+}
+
+/* Routes Internal data */
+
+message Weight {
+    double total_time = 1;      /* edge time, minutes */
+    uint32 stops_number = 2;    /* number of Stops on edge */
+    uint64 bus_id = 3;          /* bus id */
+}
+
+message RouteData {
+    Weight weight = 1;
+    oneof optional_prev_edge {
+        uint64 prev_edge = 2;
+    }
+}
+
+message OptionalRouteData {
+    oneof optional_route_data {
+        RouteData route_data = 1;
+    }
+}
+
+message VectorOptionalRouteData {
+    repeated OptionalRouteData optional_route_data = 1;
+}
+
+message RoutesInternalData {
+    repeated VectorOptionalRouteData routes_internal_data = 1;
+}

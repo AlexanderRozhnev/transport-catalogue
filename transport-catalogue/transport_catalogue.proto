@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+import "map_renderer.proto";
+import "transport_router.proto";
+import "graph.proto";
+
+package tc_proto;
+
+/* coordinates */
+message GeoCoordinates {
+    double latitude = 1;
+    double longitude = 2;
+}
+
+/* bus stop. Contains: stop name, stop coordinates */
+message Stop {
+    uint64 id = 1;
+    string name = 2;
+    GeoCoordinates coordinates = 3;
+}
+
+/* a type of bus route */
+enum BusType {
+    UNKNOWN = 0;
+    LINEAR = 1;
+    CIRCULAR = 2;
+}
+
+/* bus route. Contains: bus name, bus stops sequence */
+message Bus {
+    uint64 id = 1;
+    string bus_name = 2;
+    BusType bus_type = 3;
+    repeated uint64 stop_ids = 4;
+}
+
+/* distances */
+message Distance {
+    uint64 stop_id_from = 1;
+    uint64 stop_id_to = 2;
+    int32 distance = 3;
+}
+
+/* transport catalogue */
+message TransportCatalogue {
+    repeated Stop stops = 1;
+    repeated Bus buses = 2;
+    repeated Distance distances = 3;
+    mr_proto.MapRenderSettings map_renderer_settings = 4;
+    tr_proto.RouterSettings router_settings = 5;
+    g_proto.Graph graph = 6;
+    tr_proto.RoutesInternalData routes_internal_data = 7;
+}

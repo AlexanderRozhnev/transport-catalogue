@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package g_proto;
+
+message EdgeWeight {
+    double total_time = 1;      /* edge time, minutes */
+    uint32 stops_number = 2;    /* number of Stops on edge */
+    uint64 bus_id = 3;          /* bus id */
+}
+
+message Edge {
+    uint64 vertex_id_from = 1;
+    uint64 vertex_id_to = 2;
+    EdgeWeight weight = 3;
+}
+
+message IncidenceList {
+    repeated uint64 edge_id = 1;
+}
+
+message Graph {
+    repeated Edge edges = 1;
+    repeated IncidenceList incedence_lists = 2;
+}
